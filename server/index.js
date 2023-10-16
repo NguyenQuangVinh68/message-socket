@@ -15,11 +15,9 @@ const io = new Server(server, {
 });
 
 io.on("connect", (socket) => {
-  console.log("connected " + socket.id);
-
   socket.on("send_message", (data) => {
-    console.log("this is data save: " + data.message);
-    socket.emit("recieve_message", data);
+    console.log(data.text);
+    io.emit("send_message", data);
   });
 });
 
